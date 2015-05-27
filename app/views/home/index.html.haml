@@ -1,0 +1,16 @@
+- if @jobs.present?
+  %ol
+    - @jobs.each do |advertiser, offers|
+      %li
+        %h2= advertiser
+        %ul
+          - offers.each do |job|
+            %li
+              %h3= link_to job.title, job.url, target: '_blank'
+              %h4= job.salary
+              %p.description= job.description
+              %p
+                %span= job.provider
+                %time= job.date
+- else
+  %h2 No jobs found
